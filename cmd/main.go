@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"context"
-	"flag"
 	"fmt"
 	gogpt "github.com/sashabaranov/go-gpt3"
 	"os"
@@ -12,10 +11,18 @@ import (
 )
 
 func main() {
-	var sk string
-	flag.StringVar(&sk, "s", "", "sk")
-	flag.Parse()
 	fmt.Println("正在初始化...")
+
+	var sk string
+	fmt.Println("请输入sk:")
+	for {
+		reader := bufio.NewReader(os.Stdin)
+		sk, _ = reader.ReadString('\n')
+		sk = strings.TrimSpace(sk)
+		if len(sk) > 0 {
+			break
+		}
+	}
 	if len(sk) == 0 {
 		panic("s参数不能为空")
 	}
