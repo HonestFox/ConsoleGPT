@@ -11,28 +11,28 @@ import (
 )
 
 func main() {
-	if time.Date(2023, 3, 30, 0, 0, 0, 0, time.Local).Before(time.Now()) {
-		fmt.Println("过期了!!!")
-		time.Sleep(10 * time.Second)
-	}
+	//if time.Date(2023, 3, 30, 0, 0, 0, 0, time.Local).Before(time.Now()) {
+	//	fmt.Println("过期了!!!")
+	//	time.Sleep(10 * time.Second)
+	//}
 
 	fmt.Println("正在初始化...")
 
-	var sk = "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"
+	//var sk = "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"
 
-	//var sk string
-	//fmt.Println("请输入sk:")
-	//for {
-	//	reader := bufio.NewReader(os.Stdin)
-	//	sk, _ = reader.ReadString('\n')
-	//	sk = strings.TrimSpace(sk)
-	//	if len(sk) > 0 {
-	//		break
-	//	}
-	//}
-	//if len(sk) == 0 {x
-	//	panic("s参数不能为空")
-	//}
+	var sk string
+	fmt.Println("请输入sk:")
+	for {
+		reader := bufio.NewReader(os.Stdin)
+		sk, _ = reader.ReadString('\n')
+		sk = strings.TrimSpace(sk)
+		if len(sk) > 0 {
+			break
+		}
+	}
+	if len(sk) == 0 {
+		panic("s参数不能为空")
+	}
 
 	c := gogpt.NewClient(sk)
 	ctx := context.Background()
